@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogSite | Comment on Blog Post!! {% endblock %}
+
+
+{% block content %}
+
+	<h1> This is the Add a Comment Page</h1>
+
+	<form method='POST'>
+		{%csrf_token %}
+		
+		{{ form.as_p }}
+
+		<button class="btn btn-secondary">Comment</button>
+		<a class="btn btn-secondary" href="{% url 'article-detail' %}">Back</a> 
+	</form>
+
+{% endblock %}

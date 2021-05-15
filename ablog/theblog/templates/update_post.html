@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogSite | Edit Blog Post Page!! {% endblock %}
+
+{% block content %}
+
+	User is: {{ user }}
+
+	{% if user.is_authenticated %}
+		<h1> This is the Update Blog Post Page</h1>
+
+		<Form method='POST'>
+			{%csrf_token %}
+			
+			{{ form.as_p }}
+		
+			<button class="btn btn-secondary">Update</button>
+			<a class="btn btn-secondary" href="{% url 'home' %}">Back</a> 
+		</Form>
+				
+	{% else %}
+
+		<h1> You are not allowed to Update a Post here as you are not logged in...!!!</h1>
+
+	{% endif %}
+
+
+
+{% endblock %}

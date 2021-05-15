@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogSite | Add Blog Post Page!! {% endblock %}
+
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+
+		<h1> This is the Add Blog Post Page</h1>
+
+		<form method='POST'>
+			{%csrf_token %}
+			
+			{{ form.as_p }}
+
+			<button class="btn btn-secondary">Post</button>
+			<a class="btn btn-secondary" href="{% url 'home' %}">Back</a> 
+		</form>
+
+	{% else %}	
+
+		<h1> You are not allowed to Create a Post here as you are not logged in...!!!</h1>
+
+	{% endif %}
+
+
+{% endblock %}

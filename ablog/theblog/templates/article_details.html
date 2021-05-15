@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogSite | {{ post.title_tag }} {% endblock %}
+
+
+{% block content %}
+
+	<small> This is the Details Page of the Blog Site</small>
+	<hr>
+
+	<h1>Title: {{ post.title }}</h1>
+	<small>
+		By: 
+		{{ post.author.first_name }}   
+		{{ post.author.last_name }} - 
+		{{ post.post_date }} -
+		
+		User is: {{ user }}
+
+		{% if user.is_authenticated %}
+			<a href="{% url 'update_post' post.pk %}">(Edit)</a>
+		{% endif %}	
+	</small>
+	<hr>
+	<br>
+	{{ post.body }}
+
+<br>
+<br>
+<hr>
+
+{% if not post.comments.all %}
+	
+{% else %}
+	
+	<div class="card text-white bg-info mb-3">
+		<strong><small>Comments for the Blog Page:</small></strong>
+	</div>
+	{% for comment in post.comments.all %}
+		<strong>
+			{{ comment.name }} - {{ comment.date_added }} 
+
+		</strong><br>
+		{{ comment.body }}
+		<br><br>
+	{% endfor %}
+	<br><br>
+
+{% endif  %}
+
+
+<br>
+<hr>
+<a class="btn btn-secondary" href="{% url 'home' %}">Back</a>
+
+
+{% endblock %}

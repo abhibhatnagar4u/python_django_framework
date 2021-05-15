@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogSite | Login Page!! {% endblock %}
+
+
+{% block content %}
+	<h1> This is the Blog Post Login Page...</h1>
+
+	<!-- <div class="form-group"> -->
+		<Form method='POST'>
+			{%csrf_token %}
+			
+			{{ form.as_p }}
+
+			<button class="btn btn-secondary">Login</button>
+			<a class="btn btn-secondary" href="{% url 'home' %}">Back</a> 
+		</Form>
+	<!-- </div> -->
+		
+{% endblock %}
